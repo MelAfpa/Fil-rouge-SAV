@@ -1,0 +1,23 @@
+:root{
+   --gradient-bg: linear-gradient(
+   to right,
+   #ddd,
+   #ccc,
+   #bbb,
+   #aaa,
+   #aaa,
+   #bbb,
+   #ccc,
+   #ddd
+   );
+
+}
+
+body{
+   min-height: 50em;
+   background-image:var(--gradient-bg);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  /*  border: 4px solid black; */
+}
