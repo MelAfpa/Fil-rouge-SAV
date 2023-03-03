@@ -9,7 +9,7 @@
  <link rel='stylesheet' type='text/css' href='style/connexion.css'>
 </head>
 <body>
-   <h2>CONNEXION</h2>
+   <h1>CONNEXION</h1>
    <form action="home.php" method="post" class="form">
       <div class="div_form">
    		<label for="login" class="form-label">Log name</label>
