@@ -40,13 +40,18 @@ body{
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   background-image: var(--gradient-bg);
    background-image:  url("../images/Menuiz\ Man.png");
    background-repeat: no-repeat;
-   background-size: 50%;
+   background-size: 26em;
    background-position: center 10%;
    border: 8px solid #3C4FA0; 
 }
+
+
+img {
+   opacity: 0.5;
+}
+
 h1{
    margin: 2rem;
 }
