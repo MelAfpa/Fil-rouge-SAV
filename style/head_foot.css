@@ -19,7 +19,7 @@
    #5580AD,
    #4288C7,
    #8EBED8
-   )
+   );
 }
 
 *,
@@ -69,7 +69,7 @@ header> nav> ul{
 header> nav> ul> li{
    font-size: 1.25em;
 
-   padding: .5em;
+   padding: .4em;
    width: 15%;
    margin: 0 3%; 
    list-style: none;
@@ -101,6 +101,75 @@ footer{
    justify-content: center;
    align-items: center;
    background-color: #fff;
-   border: 4px solid #3C4FA0;
+   border-top: 4px solid #3C4FA0;
 }
 
+p{
+   text-align: center;
+   margin: 2rem;
+   border: 1px solid #000;
+}
+
+@media screen and (max-width:1025px) {
+   p::after{
+      font-weight: bold;
+      content: ' 1025px';
+   }
+   header> img{
+      width: 14rem;
+   }
+   header> nav> ul> li{
+      font-size: 1em;
+      width: 17%;
+      margin: 0 2%; 
+   }
+}
+@media screen and (max-width:769px) {
+   p::after{
+      
+      content: ' 769px';
+   }
+   header> img{
+      width: 10rem;
+   }
+   header> nav> ul> li{
+      font-size: 1em;
+   
+      width: 25%;
+      margin: 0 0%; 
+   }
+}
+
+
+@media screen and (max-width:480px) {
+   p::after{
+      
+      content: ' 480px';
+   }
+
+   header>img{
+      width: 100%;
+   }
+   header{
+      flex-direction: column;
+   }
+
+   header> nav> ul{
+      flex-direction: column;
+   }
+
+   header> nav> ul> li{
+      font-size: 1em;
+      width: 80%;
+      margin: 1%; 
+   }
+}
+
+/*
+    @media screen and (min-width:420px) and (max-width:650px)
+
+    For mobile devices: 320px to 480px
+    For tablets and ipads: 481px to 768px
+    For laptops: 769px to 1024px
+    For desktops: 1025px to 1200px
+ */
