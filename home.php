@@ -1,6 +1,15 @@
-<?php require_once('require/header.php'); ?>
 
-				<p>max-width: </p>
+
+<?php  
+	$content= '<p>max-width: </p>' 
 	
-<?php require_once('require/footer.php'); ?>
+	
+	
+?>
+
+
+<?php require_once('View/template.php'); ?>
+
+
+	
 

@@ -42,6 +42,7 @@ header{
    position: static;
    inset: 0px;
    display: flex;
+   background-color: #fff;
 }
 
 
@@ -110,6 +111,11 @@ p{
    border: 1px solid #000;
 }
 
+
+
+
+
+
 @media screen and (max-width:1025px) {
    p::after{
       font-weight: bold;
@@ -126,7 +132,6 @@ p{
 }
 @media screen and (max-width:769px) {
    p::after{
-      
       content: ' 769px';
    }
    header> img{
@@ -143,25 +148,22 @@ p{
 
 @media screen and (max-width:480px) {
    p::after{
-      
       content: ' 480px';
    }
 
-   header>img{
-      width: 100%;
-   }
    header{
       flex-direction: column;
+     
    }
 
-   header> nav> ul{
-      flex-direction: column;
+   header>img{
+      width: 20%;
    }
 
    header> nav> ul> li{
-      font-size: 1em;
-      width: 80%;
-      margin: 1%; 
+      font-size: .85em;
+      width: 30%;
+      margin: .5%; 
    }
 }
 

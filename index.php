@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" /> -->
-	<title>my_exercices</title>
+	<title>SAV-LOG</title>
  <link rel='stylesheet' type='text/css' href='style/connexion.css'>
 </head>
 <body>
