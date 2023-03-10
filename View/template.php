@@ -8,11 +8,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" /> -->
 		<title>SAV</title>
-		<link rel='stylesheet' type='text/css' href='style/template.css'>
+		<link rel='stylesheet' type='text/css' href='../style/template.css'>
 	</head>
 	<body>
 		<header>
-      <img src="images/Menuiz Man.png">
+      <img src="../images/Menuiz Man.png">
 			<nav>
 				<ul>
 					<li><a href="index.php">Login</a></li>

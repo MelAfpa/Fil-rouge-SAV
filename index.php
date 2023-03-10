@@ -12,7 +12,7 @@
 	<div>
 		<img src="images/Menuiz Man.png">
 		<h1>CONNEXION</h1>
-   	<form action="home.php" method="post" class="form">
+   	<form action="View/view_home.php" method="post" class="form">
    	   <div class="div_form">
    			<label for="login" class="form-label">Log name</label>
    		   <input type="login" class="form-control" id="login" name="login" placeholder=" (/ 'x' \)" required> 
