@@ -15,7 +15,7 @@
       <img src="../images/Menuiz Man.png">
 			<nav>
 				<ul>
-					<li><a href="index.php">Login</a></li>
+					<li><a href="../index.php">Login</a></li>
 					<li><a href="expedition.php">Expedition</a></li>
 					<li><a href="diagnostic.php">Diagnostic</a></li>
 					<li><a href="finalises.php">Finalises</a></li>
