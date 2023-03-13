@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,20 +12,20 @@
 	</head>
 	<body>
 		<header>
-      <img src="../images/Menuiz Man.png">
+      <img src="../images/Menuiz Man.png" alt="logo">
 			<nav>
 				<ul>
-					<li><a href="../index.php">Login</a></li>
+					<li><a href="../index.php">Log out</a></li>
 					<li><a href="expedition.php">Expedition</a></li>
 					<li><a href="diagnostic.php">Diagnostic</a></li>
 					<li><a href="finalises.php">Finalises</a></li>
 				</ul>
 			</nav>
 		</header>
-      <body>
-
-		<?= $content?>
-      
+		<p class='test_media_queries'>max-width: </p> <!-- A' SUPPRIMER -->
+		<div class='main_content'>
+			<?= $content?>
+      <div>
       <footer>
 			<div>
 				<p> © 2023 Copyright: <br /> <a href="#">Beware the data<a></p>

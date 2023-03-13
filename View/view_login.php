@@ -18,7 +18,7 @@
 	<div>
 		<img src="images/Menuiz Man.png" alt="logo">
 		<h1>CONNEXION</h1>
-   	<form action="Controler/connexion.php" method="post" class="form">
+   	<form action="index.php" method="post" class="form">
    	   <div class="div_form">
    			<label for="login" class="form-label">Log name</label>
    		   <input type="login" class="form-control" id="login" name="login" placeholder=" (/ 'x' \)" required> 

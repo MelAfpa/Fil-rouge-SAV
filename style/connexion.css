@@ -81,13 +81,13 @@ form> *{
    color: #ddd;
 }
 
-form> :last-child{
-   border: 0px solid #3C4FA0; 
+/* form> div:has button{
+   border: 20px solid #3C4FA0; 
    display: flex;
    justify-content: space-around;
-}
+} */
 
 
-form> :last-child> *{
+form> div>button{
    padding: .2rem .8rem;
 }
