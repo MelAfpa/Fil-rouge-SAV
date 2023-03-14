@@ -1,38 +1,31 @@
 <?php 
-	$wrong_path= '';
-	if(isset($_GET['action'])){
-		if($_GET['action'] === 'input') $wrong_path= '<span>&#128533 &emsp; Erreur de connexion</span>';
-		if($_GET['action'] === 'url') $wrong_path= '<span>&#128534 &emsp; Entrez vos identifiants</span>';
-	} 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" /> -->
-	<title>SAV-LOG</title>
- <link rel='stylesheet' type='text/css' href='style/connexion.css'>
-</head>
-<body>
-	<div>
-		<img src="images/Menuiz Man.png" alt="logo">
-		<h1>CONNEXION</h1>
-   	<form action="Controler/connexion.php" method="post" class="form">
-   	   <div class="div_form">
-   			<label for="login" class="form-label">Log name</label>
-   		   <input type="login" class="form-control" id="login" name="login" placeholder=" (/ 'x' \)" required> 
-   		</div>
-   		<div class="div_form">
-   			<label for="password" class="form-label">Password</label>
-   			<input type="password" class="form-control" id="password" name="password" placeholder="**********">
-   		</div>
-   		<div>
-   			<button type="submit" class="form-submit">Connect</button>	            
-   			<button type="reset" class="form-reset">Reset</button>	     
-   	   </div>
-			<?= $wrong_path; ?>        
-   	</form>
-	<div>
-</body>
-</html>
+$action='';
+$wrong_inputs= '';
+
+require 'Controler/connexion.php';
+echo "DEBUG action= $action <br>";
+
+	switch($action){
+
+		case 'logged_as_sav': 
+			require 'View/view_home_sav.php';
+		break;
+
+		case 'logged_as_hotline': 
+			require 'View/view_home_hotline.php';
+		break;
+
+		case 'logged_as_admin': 
+			require 'View/view_home_admin.php';
+		break;
+
+		case 'wrong_inputs':
+			$wrong_inputs= '<span>&#128533 &emsp; Erreur de connexion</span>';	
+			require 'View/view_login.php';
+		break;
+
+		default:
+			require 'View/view_login.php';
+	}
+
+	

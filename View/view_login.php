@@ -1,10 +1,3 @@
-<?php 
-	$wrong_path= '';
-	if(isset($_GET['action'])){
-		if($_GET['action'] === 'input') $wrong_path= '<span>&#128533 &emsp; Erreur de connexion</span>';
-		if($_GET['action'] === 'url') $wrong_path= '<span>&#128534 &emsp; Entrez vos identifiants</span>';
-	} 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,13 +18,13 @@
    		</div>
    		<div class="div_form">
    			<label for="password" class="form-label">Password</label>
-   			<input type="password" class="form-control" id="password" name="password" placeholder="**********">
+   			<input type="password" class="form-control" id="password" name="password" placeholder="**********" required>
    		</div>
    		<div>
    			<button type="submit" class="form-submit">Connect</button>	            
    			<button type="reset" class="form-reset">Reset</button>	     
    	   </div>
-			<?= $wrong_path; ?>        
+			<?= $wrong_inputs; ?>        
    	</form>
 	<div>
 </body>
