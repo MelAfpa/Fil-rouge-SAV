@@ -81,13 +81,23 @@ form> *{
    color: #ddd;
 }
 
-/* form> div:has button{
-   border: 20px solid #3C4FA0; 
-   display: flex;
-   justify-content: space-around;
-} */
 
 
 form> div>button{
    padding: .2rem .8rem;
+}
+
+.captcha{
+   font-size: 1.25rem;
+
+   font-weight: 300;
+   text-align: center;
+   margin: 0px 1em;
+   width: 3.2em; 
+   text-decoration: line-through;
+   background-color: #fff5;
+}
+
+.captcha_inputs{
+   width: 3.2em; 
 }

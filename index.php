@@ -1,9 +1,11 @@
 <?php 
 $action='';
 $wrong_inputs= '';
+$pre_log='';
+$pre_pass='';
 
 require 'Controler/connexion.php';
-echo "DEBUG action= $action <br>";
+echo"&emsp;DEBUG action: $action "; ### DEBUG
 
 	switch($action){
 
@@ -23,9 +25,14 @@ echo "DEBUG action= $action <br>";
 			$wrong_inputs= '<span>&#128533 &emsp; Erreur de connexion</span>';	
 			require 'View/view_login.php';
 		break;
+		case 'wrong_captcha':
+			$wrong_inputs= '<span>&#129302 &nbsp; Le captcha ne correspond pas</span>';	
+			require 'View/view_login.php';
+		break;
 
 		default:
-			require 'View/view_login.php';
+		require 'View/view_login.php';
+		// if(isset...) session_destroy; ???
 	}
 
 	
