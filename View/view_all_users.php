@@ -12,19 +12,27 @@
 
 
 <?php foreach($users as $user) : ?>
-   <li> <?= " " . $user['Log_name']. " " . $user['branche']; ?> </li>
+   <li> <?= " " .$user['Id_user']. " ". $user['Log_name']. " " . $user['branche']; ?> </li>
 <?php endforeach ?>
 
 <?php if(count($users) === 1) : ?>
-   
+   <?= $user['Id_user']?>
+
   <!--BUTTON  DELETE--> 
-  <form action="../index.php" method="POST">
-    <input type="hidden"  name="action" value="getFormDelete">
+  <form action="actionControl.php" method="POST">
+    <input type="hidden"  name="action" value="del_user">
+    <input type="hidden"  name="del_id" value="<?= $user['Id_user']?>">
     <input type="submit" value="supprimer ce Technicien">
   </form>
+
+  <!--BUTTON  UPDATE--> 
+  <form action="" method="POST">
+    <input type="hidden"  name="action" value="upd_user">
+    <input type="hidden"  name="upd_id" value="<?= $user['Id_user']?>">
+    <input type="submit" value="modifier ce Technicien">
+  </form>
+
 <?php endif ?>
-
-
 
 
 <?php  $content.= ob_get_clean(); ?>

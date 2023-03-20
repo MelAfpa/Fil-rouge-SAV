@@ -70,4 +70,16 @@ class usersMgr{
       echo "res= $res";
       return $res;
    }
+
+
+
+   public static function delUser(string $login, string $pass, int $id){
+      $sql= "DELETE FROM user_sav WHERE Id_user = ?";
+      $db= dbCon::getConnexion($login, $pass);
+      $stmt= $db->prepare($sql);
+      $stmt->execute([$id]);
+      $lengthUser= $stmt->rowCount();
+      $stmt->closeCursor();
+    return ($lengthUser === 1);
+   }
 }

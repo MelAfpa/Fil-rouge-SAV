@@ -4,9 +4,8 @@
 
 <?php $content.= $msg?>
 
-
 <?php if($_SESSION['userBranche'] === 'admin') : ?> 
-  
+
 <!--BUTTON SELECT ALL--> 
   <form action="../index.php" method="POST">
     <input type="hidden"  name="action" value="getFormSelect">

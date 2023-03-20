@@ -56,7 +56,6 @@ else if( isset($_SESSION['userName']) && isset($_POST['action'])){
       break;
 
       case 'add_user':   
-
          $encode= hashpass($_POST['password']);
 
          try{
@@ -69,8 +68,26 @@ else if( isset($_SESSION['userName']) && isset($_POST['action'])){
          }
          require '../View/view_home.php';
       break;
+
+
+      case 'del_user':   
+         try{
+            $users= usersMgr::delUser($_SESSION['userName'],  $_SESSION['userPass'],
+            $_POST['del_id']);
+            $msg ='DEL ok';
+          
+         }catch(PDOException $e){
+            echo $e->getMessage();
+         }
+         require '../View/view_home.php';
+      break;
    } 
 }
+
+
+
+
+
 
 function hashpass($pass){
 

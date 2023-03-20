@@ -4,8 +4,8 @@
 $pre_log= $pre_pass= ''; ### PRE REMPLIT LE FORMULAIRE SI MAJ
 
 $content= 'DEBUG view: form<br><br>'; 
- echo $_GET['action']; 
-
+ 	echo $_GET['action']; 
+	
 ?>
 <div>
 	<h2>Form</h2>
