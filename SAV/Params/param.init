@@ -1,0 +1,5 @@
+[BDD]
+host = localhost
+bdd = 'sav'
+user = 'root'
+password = ''
