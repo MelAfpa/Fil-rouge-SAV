@@ -26,39 +26,13 @@ function getConnexion(string $user, string $password)
 
     $connexion = $mysqlPDO;
     return $connexion;
-
 }
 
 
-
-
 /**
- * Récupère la liste des tickets de la table passée en paramètre
- * @param string $libelle
+ * Récupère la liste des tickets
  * @return array
  */
-// function getListeTickets(string $libelle)
-// {
-//     $sql = "SELECT num_tick FROM " . $libelle;
-
-//     $connexion = getConnexion('root', '');
-//     $curseur = $connexion->query($sql);
-//     $data = $curseur->fetchAll(PDO::FETCH_NUM);
-//     $curseur->closeCursor();
-//     $connexion = null;
-//     echo "<br/><b>Table $libelle :</b><br/> \n";
-
-//     foreach ($data as list($d)) {
-//         echo "Ticket n° $d <br/> \n";
-//     }
-
-//     if ($data)
-//         return $data;
-//     else
-//         throw new PDOException("Aucun ticket trouvé dans la table $libelle");
-
-// }
-
 function getListeTickets()
 {
     $sql = "select Num_tick, Date_tick, Num_comm, Type_tick, Log_name
@@ -72,55 +46,21 @@ function getListeTickets()
     $data = $curseur->fetchAll();
     $curseur->closeCursor();
     $connexion = null;
-
-    return $data;
-
-
-    if ($data)
-        return $data;
-    else
-        throw new PDOException("Aucun ticket trouvé");
-
-}
-
-
-function addTicket($num_ticket, $date_ticket, $id_user, $num_comm, $type_tick)
-{
-    $sql = "INSERT INTO ticket VALUES (?,?,?,?,?)";
-    $connexion = getConnexion('root', '');
-    $curseur = $connexion->prepare($sql);
-
-    $curseur->execute([$num_ticket, $date_ticket, $id_user, $num_comm, $type_tick]);
-    $data = $curseur->fetchAll();
-
-    $curseur->closeCursor();
-
-    $connexion = null;
-    return $data;
-}
-
-function updTicket(array $ticket)
-{
-
-    $sql = "UPDATE ticket SET Num_tick = :num_tick , Date_tick = :date_tick , Id_user = :id_user , Num_comm = :num_comm, Type_tick = :type_tick";
-    $connexion = getConnexion('root', '');
-    $curseur = $connexion->prepare($sql);
-
-    $data = $curseur->execute([":num_tick" => $ticket['Num_tick'], ":date_tick" => $ticket['Date_tick'], ":id_user" => $ticket['Id_user'], ":num_comm" => $ticket['Num_comm'], ":type_tick" => $ticket['Type_tick']]);
-
-    // Récupérer le nombre d'enregistrements supprimés
-
-    // Fermer le curseur / resultset
-    $curseur->closeCursor();
-    // Détruit la connexion
-    $connexion = null;
-
-    // Retourner un booléen (VRAI si 1 seul contact supprimé)
     return $data;
 }
 
 
-function searchTicket($num_ticket, $date_ticket, $num_comm, $type_tick, $log_name)
+
+/**
+ * Recherche cumulative de ticket selon le(s) critère(s) passé(s) en paramètre(s)
+ * @param mixed $num_ticket
+ * @param string $date_ticket
+ * @param string $num_comm
+ * @param string $type_tick
+ * @param string $log_name
+ * @return array
+ */
+function searchTicket($num_ticket, string $date_ticket, string $num_comm, string $type_tick, string $log_name)
 {
 
     $tabCriteria = [];
@@ -164,4 +104,109 @@ function searchTicket($num_ticket, $date_ticket, $num_comm, $type_tick, $log_nam
 
     return $curseur->fetchAll();
 }
+
+function getTicketbyNum($num_ticket)
+{
+    $sql = "SELECT * from ticket where Num_tick=?";
+    $connexion = getConnexion('root', '');
+    $curseur = $connexion->prepare($sql);
+    $curseur->execute([$num_ticket]);
+    return $curseur->fetchAll();
+}
+
+
+function getDetail($num_ticket)
+{
+    $sql = "SELECT ticket.Num_tick, Date_tick, Log_name, composer_1.Num_comm, Type_tick,  Libelle_art, nb_art, Date_comm, Etat_comm, Num_fact
+            from article
+            inner join composer_1
+            on article.Id_article = composer_1.Id_article
+            inner join commande
+            on commande.Num_comm = composer_1.Num_comm
+            inner join ticket
+            on ticket.Num_tick = commande.Num_tick
+            inner join user_sav
+            on user_sav.Id_user=ticket.Id_user
+            where ticket.Num_tick = ?";
+
+
+    $connexion = getConnexion('root', '');
+    $curseur = $connexion->prepare($sql);
+    $curseur->execute([$num_ticket]);
+    $data = $curseur->fetchAll();
+    return $data;
+
+}
+
+function updTicket(array $ticket)
+{
+    $sql = "UPDATE article
+            inner join composer_1
+            on article.Id_article = composer_1.Id_article
+            inner join commande
+            on commande.Num_comm = composer_1.Num_comm
+            inner join ticket
+            on ticket.Num_tick = commande.Num_tick
+            inner join user_sav
+            on user_sav.Id_user=ticket.Id_user
+            SET Date_tick = :date_tick , Log_name = :log_name , ticket.Num_comm = :num_comm, Type_tick = :type_tick, Libelle_art =:libelle_art,
+            nb_art =:nb_art, Etat_comm =:etat_comm, Num_fact =:num_fact
+            where ticket.Num_tick =:num_tick";
+    $connexion = getConnexion('root', '');
+    $curseur = $connexion->prepare($sql);
+
+    $curseur->execute([
+        ":num_tick" => $ticket['Num_tick'],
+        ":date_tick" => $ticket['Date_tick'],
+        ":log_name" => $ticket['Log_name'],
+        ":num_comm" => $ticket['Num_comm'],
+        ":type_tick" => $ticket['Type_tick'],
+        ":libelle_art" => $ticket['Libelle_art'],
+        ":nb_art" => $ticket['nb_art'],
+        ":etat_comm" => $ticket['Etat_comm'],
+        ":num_fact" => $ticket['Num_fact']
+
+    ]);
+    $curseur->closeCursor();
+    $connexion = null;
+    return $curseur->fetchAll();
+}
+
+function updComment(string $commentaire, $num_ticket)
+{
+    $sql = "UPDATE ticket set Comm=? where Num_tick=?";
+    $connexion = getConnexion('root', '');
+    $curseur = $connexion->prepare($sql);
+    $curseur->execute([$commentaire, $num_ticket]);
+    return $curseur->fetchAll();
+}
+
+function suppTicket($num_ticket)
+{
+    $sql = "DELETE from ticket where Num_tick=?";
+    $connexion = getConnexion('root', '');
+    $curseur = $connexion->prepare($sql);
+    $curseur->execute([$num_ticket]);
+    return $curseur->fetchAll();
+}
+
+
+
+
+
+
+// function addTicket(int $num_ticket, string $date_ticket, string $id_user, string $num_comm, string $type_tick)
+// {
+//     $sql = "INSERT INTO ticket VALUES (?,?,?,?,?)";
+//     $connexion = getConnexion('root', '');
+//     $curseur = $connexion->prepare($sql);
+
+//     $curseur->execute([$num_ticket, $date_ticket, $id_user, $num_comm, $type_tick]);
+//     $curseur->closeCursor();
+
+//     $connexion = null;
+//     return $curseur->fetchAll();
+// }
+
+
 ?>

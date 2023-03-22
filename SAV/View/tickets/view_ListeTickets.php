@@ -1,6 +1,6 @@
 <?php
 
-
+// Formulaire de recherche de tickets, situé à gauche de la liste des tickets
 $contenu = "<div class='rechGlob'>
                 <p class='recherche'>Recherche</p>
                 <div class='formRecherche'>
@@ -47,7 +47,7 @@ $contenu = "<div class='rechGlob'>
                             <option value = 'SAV' name='sav' >SAV</option>
                             <option value ='' selected=selected ></option>
                         </select> 
-                    <br/> 
+                        <br> 
                         <input type='hidden' name='action' value='MAJrechercheTicket' >
                         <br>
                         <input type='submit' value='Ok'>
@@ -55,26 +55,58 @@ $contenu = "<div class='rechGlob'>
                 </div>
             </div>" .
     "<div class=bodyTickets>";
-foreach ($tTicket as $liste):
-    $contenu .= "<div class=contTickets>
+
+// Affiche la liste des tickets de la BDD
+if (count($tTicket) === 0) {
+    $contenu .= "<p class='errTick'> Aucun ticket n'a été trouvé pour cette recherche.</p>";
+} else {
+    foreach ($tTicket as $liste):
+        $contenu .= "<div class=contTickets>
                     <span class=donneesTicket><p class='titreTick'>Ticket n°" . $liste['Num_tick'] . "</p> \n" .
-        "Date : " . $liste['Date_tick'] . "<br/> \n" .
-        "Technicien : " . $liste['Log_name'] . "<br/> \n" .
-        "Numéro de commande : " . $liste['Num_comm'] . "<br/> \n" .
-        "Type de ticket : " . $liste['Type_tick'] .
-        "</span>" .
-        "<form class=btnTickets action='indexTickets.php' method='get'> \n" .
+            "Date : " . $liste['Date_tick'] . "<br/> \n" .
+            "Technicien : " . $liste['Log_name'] . "<br/> \n" .
+            "Numéro de commande : " . $liste['Num_comm'] . "<br/> \n" .
+            "Type de ticket : " . $liste['Type_tick'] .
+            "</span>" .
+            "<form action='indexTickets.php' method='get'> \n" .
+            "<input type='hidden' " . $action . " />\n" .
+            "<input type='hidden' name='num' value='" . $liste['Num_tick'] . "' />\n" .
+            "<input type='submit' name='action' value='Detail' />\n" .
+            "<input type='submit' name='action' value='Modifier' />\n" .
+            "<input type='submit' name='action' value='Archiver' />\n" .
+            "</form>" .
 
-        "<input type='hidden' name='action' value='MAJ'" . $action . " />\n" .
+            // Boutons pour afficher le détail d'un ticket, le modifier et l'archiver
 
-        "<input type='hidden' name='idContact' value='" . $liste['Num_tick'] . "' />\n" .
-        "<input type='submit' value='Modifier' />\n" .
-        "<input type='submit'' value='Archiver' />\n" .
-        "</form>" .
-        "</div>";
+            "</div>";
 
-endforeach;
-$contenu .= "</div>";
+    endforeach;
+    $contenu .= "</div>";
+
+    // // // Affichage direct du détail d'un ticket s'il n'y en a qu'un seul trouvé
+    // if (count($tTicket) === 1 && $action === 'MAJrechercheTicket') {
+    //     foreach ($detail as $detail):
+    //         $contenu .= "<div>" .
+    //             "<span class=donneesTicket>
+    // <p class='titreTick'>Ticket n°" . $detail['Num_tick'] . "</p> \n" .
+    //             "Date : " . $detail['Date_tick'] . "<br/> \n" .
+    //             "Technicien : " . $detail['Log_name'] . "<br/> \n" .
+    //             "Numéro de commande : " . $detail['Num_comm'] . "<br/> \n" .
+    //             "Type de ticket : " . $detail['Type_tick'] .
+    //             "<br> </span>" .
+    //             "<span>
+    //                 Numéro de commande :" . $detail['Num_comm'] . "<br> \n" .
+    //             "Etat : " . $detail['Etat_comm'] . "<br> \n" .
+    //             "Numéro ticket : " . $detail['Num_tick'] . "<br> \n" .
+    //             "Numéro facture : " . $detail['Num_fact'] . "<br> \n" .
+    //             "Nb article : " . $detail['nb_art'] . "<br> \n" .
+    //             "Libelle : " . $detail['Libelle_art'] . "<br> <br> \n" .
+    //             "<textarea name='comm' id='comm' cols='30' rows='10' placeholder='Commentaire'></textarea> </span>" .
+    //             "</div>";
+    //     endforeach;
+    // }
+}
+
 
 require('View/tickets/gabarit.php');
 

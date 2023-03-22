@@ -101,6 +101,12 @@ width:100%;
 
 }
 
+body .tickets .errTick {
+    font-size: 1.3em;
+    padding: 90px;
+
+}
+
 body .tickets .bodyTickets{
     display: flex;
     flex-wrap: wrap;
@@ -171,12 +177,38 @@ font-weight: bold;
 }
 
 
+/* --------------------------------------------- DETAIL TICKETS  ---------------------------------------------*/
+body .detTickets{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
 
+body .detTickets .detailTicket {
+    width: 20%;
+    padding: 0px 0px 15px 15px;
+    border: 2px rgb(32, 3, 121) solid;
+}
+body .detTickets .detailTicket .titreTick{
+font-weight: bold;
+text-align: center;
+margin: 15px;
+}
 
+body .detTickets .detailTicket .donneesTicket{
+   text-decoration: underline;
+   margin: 10px;
+}
 
+body .detTickets .detailTicket textarea{
+    resize: none;
+margin-left: 15px;    
+box-shadow: 4px 4px 4px rgb(32, 3, 121);
+ }
 
-
-
+ body .detTickets .detailTicket input {
+    margin-left: 20px;
+ }
 
 
 
