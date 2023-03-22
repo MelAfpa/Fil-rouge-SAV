@@ -24,7 +24,21 @@
     <input type="submit" value="ajouter un Technicien">
   </form>
 
+<?php endif ?>
 
+<?php if($_SESSION['userBranche'] === 'sav') : ?> 
+
+
+
+
+
+
+  <?= ':) sav' ?>
+<?php endif ?>
+
+
+<?php if($_SESSION['userBranche'] === 'hotline') : ?> 
+  <?= ':} hot' ?>
 <?php endif ?>
    
    <?= " DEBUG SESSION:  $_SESSION[userName]"; ?>

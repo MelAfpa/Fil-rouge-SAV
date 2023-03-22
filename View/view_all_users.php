@@ -1,10 +1,5 @@
 
-<?= " DEBUG SESSION:  $_SESSION[userName]"; ?>
-<?= "<br> DEBUG SESSION:  $_SESSION[userPass]"; ?>
-<?= "<br> DEBUG SESSION:  $_SESSION[userBranche]"; ?>
-
 <?php ob_start(); ?>
-
 
 <h3>Element(s) trouves:<br><br><br></h3>
 
@@ -12,24 +7,26 @@
 
 
 <?php foreach($users as $user) : ?>
-   <li> <?= " " .$user['Id_user']. " ". $user['Log_name']. " " . $user['branche']; ?> </li>
+   <li> <?= "  ". $user['Log_name']. " " . $user['branche']; ?> </li>
 <?php endforeach ?>
 
 <?php if(count($users) === 1) : ?>
    <?= $user['Id_user']?>
 
   <!--BUTTON  DELETE--> 
-  <form action="actionControl.php" method="POST">
-    <input type="hidden"  name="action" value="del_user">
+  <form action="actionControl.php" method="GET">
+    <input type="hidden"  name="action" value="getFormConfirm">
     <input type="hidden"  name="del_id" value="<?= $user['Id_user']?>">
+    <input type="hidden"  name="del_dept" value="<?= $user['branche']?>">
     <input type="submit" value="supprimer ce Technicien">
   </form>
 
   <!--BUTTON  UPDATE--> 
-  <form action="" method="POST">
-    <input type="hidden"  name="action" value="upd_user">
-    <input type="hidden"  name="upd_id" value="<?= $user['Id_user']?>">
-    <input type="submit" value="modifier ce Technicien">
+  <form action="actionControl.php" method="GET">
+      <input type="hidden"  name="action" value="getFormUpdate">
+      <input type="hidden"  name="upd_id" value="<?= $user['Id_user']?>">
+      <input type="hidden"  name="upd_log" value="<?= $user['Log_name']?>">
+      <input type="submit" value="modifier ce Technicien">
   </form>
 
 <?php endif ?>

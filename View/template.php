@@ -7,6 +7,7 @@
 		<!-- <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" /> -->
 		<title>SAV</title>
 		<link rel='stylesheet' type='text/css' href='../style/template.css'>
+		<link rel='stylesheet' type='text/css' href='../style/ticket.css'>
 	</head>
 	<body>
 		<header>

@@ -1,11 +1,11 @@
 
 <?php ob_start(); 
 
-$pre_log= $pre_pass= ''; ### PRE REMPLIT LE FORMULAIRE SI MAJ
+
 
 $content= 'DEBUG view: form<br><br>'; 
  	echo $_GET['action']; 
-	
+
 ?>
 <div>
 	<h2>Form</h2>
@@ -25,10 +25,10 @@ $content= 'DEBUG view: form<br><br>';
 		   <input type="text" name="login"  value="<?= $pre_log ?>" placeholder="login"> 
 		</div>
 
-		<?php if($_GET['action'] !== 'getFormSelectOne') :?>
+		<?php if($_GET['action'] !== 'getFormSelectOne' AND $_GET['action'] !== 'getFormUpdate') :?>
 			<div class="div_form">
 				<label for="password">password</label>
-				<input type="text"  name="password" value="<?= $pre_pass ?>" placeholder="password">
+				<input type="text"  name="password" placeholder="password">
 			</div>
 		<?php endif ?>
 
@@ -62,6 +62,11 @@ $content= 'DEBUG view: form<br><br>';
 
 		<?php if($_GET['action'] === 'getFormAdd') : ?>
 			<input type="hidden" name="action" value="add_user">
+		<?php endif ?>
+
+		<?php if($_GET['action'] === 'getFormUpdate') : ?>
+			<input type="hidden" name="action" value="upd_user">
+			<input type="hidden" name="upd_id" value="<?= $_GET['upd_id'] ?>">
 		<?php endif ?>
 
 			<button type="submit">Select</button>	            
