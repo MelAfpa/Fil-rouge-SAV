@@ -85,18 +85,22 @@ else if( isset($_SESSION['userName']) && isset($_POST['action'])){
          try{
                if($_POST['del_dept'] === 'admin'){
 
-                  //$users= userMgr::
+                  $users= usersMgr::selectUsers();
+                  $count=0;
+                  foreach($users as $user){
+                     if($user['branche'] === 'admin')
+                     $count++;
+                  } 
+                  
+                  if($count > 1){
+                     $users= usersMgr::delUser($_POST['del_id']);
+                     $msg ='DEL ok';
+                  }else $msg ='not the last admin';
                } 
-         
-            $users= usersMgr::delUser($_POST['del_id']);
-            $msg ='DEL ok';
-          
          }catch(PDOException $e){
             echo $e->getMessage();
          }
          require '../View/view_home.php';
-
-
       break;
 
 ///////////////////////////////////////////////////

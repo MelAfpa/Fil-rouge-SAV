@@ -1,11 +1,12 @@
 <?php
+require 'dbCon.class.php';
 /**
  * Se connecte à la base de données SAV
  * @param string $user
  * @param string $password
  * @return PDO
  */
-function getConnexion(string $user, string $password)
+/* function getConnexion(string $user, string $password)
 {
     $tParam = parse_ini_file('Params/param.init', true);
 
@@ -28,6 +29,8 @@ function getConnexion(string $user, string $password)
     return $connexion;
 
 }
+ */
+
 
 
 
@@ -61,12 +64,12 @@ function getConnexion(string $user, string $password)
 
 function getListeTickets()
 {
-    $sql = "select Num_tick, Date_tick, Num_comm, Type_tick, Log_name
+    $sql = "select Num_tick, Date_tick, Num_comm, Type, Log_name
             from ticket
             inner join user_sav
             on ticket.Id_user = user_sav.Id_user;";
 
-    $connexion = getConnexion('root', '');
+    $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
     $curseur->execute();
     $data = $curseur->fetchAll();
@@ -84,13 +87,13 @@ function getListeTickets()
 }
 
 
-function addTicket($num_ticket, $date_ticket, $id_user, $num_comm, $type_tick)
+function addTicket($num_ticket, $date_ticket, $id_user, $num_comm, $type)
 {
     $sql = "INSERT INTO ticket VALUES (?,?,?,?,?)";
-    $connexion = getConnexion('root', '');
+    $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
 
-    $curseur->execute([$num_ticket, $date_ticket, $id_user, $num_comm, $type_tick]);
+    $curseur->execute([$num_ticket, $date_ticket, $id_user, $num_comm, $type]);
     $data = $curseur->fetchAll();
 
     $curseur->closeCursor();
@@ -102,11 +105,11 @@ function addTicket($num_ticket, $date_ticket, $id_user, $num_comm, $type_tick)
 function updTicket(array $ticket)
 {
 
-    $sql = "UPDATE ticket SET Num_tick = :num_tick , Date_tick = :date_tick , Id_user = :id_user , Num_comm = :num_comm, Type_tick = :type_tick";
-    $connexion = getConnexion('root', '');
+    $sql = "UPDATE ticket SET Num_tick = :num_tick , Date_tick = :date_tick , Id_user = :id_user , Num_comm = :num_comm, Type = :type";
+    $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
 
-    $data = $curseur->execute([":num_tick" => $ticket['Num_tick'], ":date_tick" => $ticket['Date_tick'], ":id_user" => $ticket['Id_user'], ":num_comm" => $ticket['Num_comm'], ":type_tick" => $ticket['Type_tick']]);
+    $data = $curseur->execute([":num_tick" => $ticket['Num_tick'], ":date_tick" => $ticket['Date_tick'], ":id_user" => $ticket['Id_user'], ":num_comm" => $ticket['Num_comm'], ":type" => $ticket['Type']]);
 
     // Récupérer le nombre d'enregistrements supprimés
 
@@ -120,7 +123,7 @@ function updTicket(array $ticket)
 }
 
 
-function searchTicket($num_ticket, $date_ticket, $num_comm, $type_tick, $log_name)
+function searchTicket($num_ticket, $date_ticket, $num_comm, $type, $log_name)
 {
 
     $tabCriteria = [];
@@ -139,16 +142,16 @@ function searchTicket($num_ticket, $date_ticket, $num_comm, $type_tick, $log_nam
         array_push($tabCriteria, 'Num_comm = :num_comm');
         $tabValues['num_comm'] = $num_comm;
     }
-    if (isset($type_tick) && !empty($type_tick)) {
-        array_push($tabCriteria, 'Type_tick = :type_tick');
-        $tabValues['type_tick'] = $type_tick;
+    if (isset($type) && !empty($type)) {
+        array_push($tabCriteria, 'Type = :type');
+        $tabValues['type'] = $type;
     }
     if (isset($log_name) && !empty($log_name)) {
         array_push($tabCriteria, 'Log_name = :log_name');
         $tabValues['log_name'] = $log_name;
     }
 
-    $sql = "select Num_tick, Date_tick, Num_comm, Type_tick, Log_name
+    $sql = "select Num_tick, Date_tick, Num_comm, Type, Log_name
             from ticket
             inner join user_sav
             on ticket.Id_user = user_sav.Id_user";
@@ -158,7 +161,7 @@ function searchTicket($num_ticket, $date_ticket, $num_comm, $type_tick, $log_nam
     }
 
 
-    $connexion = getConnexion('root', '');
+    $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
     $curseur->execute($tabValues);
 

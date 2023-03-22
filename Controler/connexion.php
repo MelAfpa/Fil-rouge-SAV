@@ -3,8 +3,8 @@
 	session_start();
    $action='';
    $wrong_inputs= '';
-   $pre_log='Garnier';
-   $pre_pass='Alexandre-Garnier';
+   $pre_log='Vasseur';
+   $pre_pass='Evan-Vasseur';
    $msg='...';
    if(isset($_POST['birth_date']) && ! empty($_POST['birth_date'])) die();
 
@@ -17,6 +17,7 @@
          $pre_log= $_POST['login'];
          $pre_pass= $_POST['password'];
       }  */
+
       else{
          $login = $_POST['login'];
          $login = addslashes($login); ### SECURITY  
@@ -52,7 +53,6 @@
          }
       }
    } 
-
 
    switch($action){
 		case 'logged_as_sav': 

@@ -17,8 +17,10 @@
         <img src="images/Menuiz Man.png" alt="logo">
         <nav>
             <ul>
-                <li><a href="index.php">Log out</a></li>
-                <li><a href="expedition.php">Expedition</a></li>
+                <!-- <li><a href="index.php">Log out</a></li>
+                <li><a href="expedition.php">Expedition</a></li> -->
+                <li><a href="Controler/log_out.php">Log out</a></li>
+				<li><a href="indexTickets.php?action=accueil">Home</a></li>
                 <li><a href="diagnostic.php">Diagnostic</a></li>
                 <li><a href="finalises.php">Finalises</a></li>
             </ul>

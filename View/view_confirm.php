@@ -10,6 +10,7 @@
   <form action="actionControl.php" method="POST">
     <input type="hidden"  name="action" value="del_user">
     <input type="hidden"  name="del_id" value="<?= $_GET['del_id']?>">
+    <input type="hidden"  name="del_dept" value="<?= $_GET['del_dept']?>">
     <input type="submit" value="UI">
   </form>
 

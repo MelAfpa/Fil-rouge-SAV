@@ -8,6 +8,7 @@
 		<title>SAV</title>
 		<link rel='stylesheet' type='text/css' href='../style/template.css'>
 		<link rel='stylesheet' type='text/css' href='../style/ticket.css'>
+		<link rel='stylesheet' type='text/css' href='../style/content.css'>
 	</head>
 	<body>
 		<header>

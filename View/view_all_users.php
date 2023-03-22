@@ -7,7 +7,7 @@
 
 
 <?php foreach($users as $user) : ?>
-   <li> <?= "  ". $user['Log_name']. " " . $user['branche']; ?> </li>
+   <li> <?= "  ". $user['Log_name']. " _/ " . $user['branche']; ?> </li>
 <?php endforeach ?>
 
 <?php if(count($users) === 1) : ?>
@@ -37,3 +37,4 @@
 <?php  $content.= "<br><br> <strong> Welcome: ". $_SESSION['userName'] . " from " . $_SESSION['userBranche'] . "<strong>"; ?>
 
 <?php require_once('template.php'); ?>
+
