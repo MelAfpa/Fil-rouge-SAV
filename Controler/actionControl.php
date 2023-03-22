@@ -1,9 +1,9 @@
 <?php
 require '../Model/usersMgr.class.php';
 session_start();
-
+$pre_log=''; ### PRE REMPLIT LE FORMULAIRE SI MAJ
 if( ! isset($_SESSION['userName'])) die(" Page invalid :( ");  ###  BLOQUAGE DU PASSAGE PAR URL
-$msg=':>';
+$msg='...';
 
 if( isset($_SESSION['userName']) && isset($_GET['action'])){
    switch($_GET['action']){
@@ -24,6 +24,15 @@ if( isset($_SESSION['userName']) && isset($_GET['action'])){
          require '../View/view_form.php';
       break;
 
+      case 'getFormUpdate':       
+         $pre_log= $_GET['upd_log'];
+         require '../View/view_form.php';
+      break;
+
+      case 'getFormConfirm';      
+         require '../View/view_confirm.php';
+      break;
+
       default:  
          require '../View/view_home.php';
    } 
@@ -36,7 +45,7 @@ else if( isset($_SESSION['userName']) && isset($_POST['action'])){
 
       case 'select_users':
          try{
-            $users= usersMgr::selectUsers($_SESSION['userName'],  $_SESSION['userPass']);
+            $users= usersMgr::selectUsers();
           
          }catch(PDOException $e){
             $e->getMessage();
@@ -46,8 +55,7 @@ else if( isset($_SESSION['userName']) && isset($_POST['action'])){
 
       case 'select_user':  ### no 's'  
          try{
-            $users= usersMgr::selectUser($_SESSION['userName'],  $_SESSION['userPass'],
-            $_POST['id'], $_POST['login'], $_POST['branche']);
+            $users= usersMgr::selectUser($_POST['id'], $_POST['login'], $_POST['branche']);
           
          }catch(PDOException $e){
             echo $e->getMessage();
@@ -56,35 +64,57 @@ else if( isset($_SESSION['userName']) && isset($_POST['action'])){
       break;
 
       case 'add_user':   
-         $encode= hashpass($_POST['password']);
+        // $encode= hashpass($_POST['password']);
+        // echo "CHECK DEBBUG: $_POST[password] --- $encode";
 
          try{
-            $users= usersMgr::addUser($_SESSION['userName'],  $_SESSION['userPass'],
-            $_POST['login'], $encode, $_POST['branche'] );
-            $msg ='ADD ok';
+            $user= usersMgr::addUser($_POST['login'], $_POST['password'], $_POST['branche'] );
+            if($user) $msg ='ADD ok';
+            else $msg = 'ERROR';
           
          }catch(PDOException $e){
             echo $e->getMessage();
          }
          require '../View/view_home.php';
       break;
+//////////////////////////////////////////////////
 
 
       case 'del_user':   
+
          try{
-            $users= usersMgr::delUser($_SESSION['userName'],  $_SESSION['userPass'],
-            $_POST['del_id']);
+               if($_POST['del_dept'] === 'admin'){
+
+                  //$users= userMgr::
+               } 
+         
+            $users= usersMgr::delUser($_POST['del_id']);
             $msg ='DEL ok';
           
          }catch(PDOException $e){
             echo $e->getMessage();
          }
          require '../View/view_home.php';
+
+
       break;
+
+///////////////////////////////////////////////////
+       case 'upd_user':   
+         try{
+            $users= usersMgr::updUser($_POST['login'], $_POST['branche'], $_POST['upd_id']);
+            if($res === 1)
+            $msg ='UPD ok ' . $res; 
+
+            else $msg = 'ERROR';
+          
+         }catch(PDOException $e){
+            echo $e->getMessage();
+         }
+         require '../View/view_home.php';
+      break; 
    } 
 }
-
-
 
 
 
