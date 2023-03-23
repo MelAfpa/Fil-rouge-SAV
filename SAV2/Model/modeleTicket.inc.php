@@ -16,6 +16,7 @@ function getListeTickets()
     $curseur = $connexion->prepare($sql);
     $curseur->execute();
     $data = $curseur->fetchAll();
+
     $curseur->closeCursor();
     $connexion = null;
     return $data;
@@ -74,6 +75,8 @@ function searchTicket($num_ticket, string $date_ticket, string $num_comm, string
     $curseur = $connexion->prepare($sql);
     $curseur->execute($tabValues);
 
+    $curseur->closeCursor();
+    $connexion = null;
     return $curseur->fetchAll();
 }
 
@@ -97,13 +100,14 @@ function getDetail($num_ticket)
             on user_sav.Id_user=ticket.Id_user
             where ticket.Num_tick = ?";
 
-
     $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
     $curseur->execute([$num_ticket]);
     $data = $curseur->fetchAll();
-    return $data;
 
+    $curseur->closeCursor();
+    $connexion = null;
+    return $data;
 }
 
 /**
@@ -125,6 +129,7 @@ function updTicket(array $ticket)
             SET ticket.Num_comm = :num_comm, ticket.Date_tick =:date_tick, Type_tick = :type_tick, Libelle_art =:libelle_art,
             nb_art =:nb_art, Etat_comm =:etat_comm, Num_fact =:num_fact, Comm =:comm, article.Ref_art =:ref_art
             where ticket.Num_tick =:num_tick";
+
     $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
 
@@ -139,8 +144,8 @@ function updTicket(array $ticket)
         ":num_fact" => $ticket['Num_fact'],
         ":comm" => $ticket['Comm'],
         ":ref_art" => $ticket['Ref_art']
-
     ]);
+
     $curseur->closeCursor();
     $connexion = null;
     return $curseur->fetchAll();
@@ -161,6 +166,7 @@ function suppTicket($num_ticket)
     alert('Confirmez-vous la suppression ?')
     </script>";
     $curseur->execute([$num_ticket]);
+
     $curseur->closeCursor();
     $connexion = null;
     return $curseur->fetchAll();
@@ -168,15 +174,24 @@ function suppTicket($num_ticket)
 
 
 
+/**
+ * Ajoute un ticket avec le numéro de ticket en auto incrément remplacé par default
+ * @param string $default
+ * @param string $date_ticket
+ * @param string $id_user
+ * @param string $num_comm
+ * @param string $type_tick
+ * @param string $commentaire
+ * @return array
+ */
 function addTicket(string $default, string $date_ticket, string $id_user, string $num_comm, string $type_tick, string $commentaire)
 {
     $sql = "INSERT INTO ticket VALUES (?,?,?,?,?,?)";
     $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
-
     $curseur->execute([$default, $date_ticket, $id_user, $num_comm, $type_tick, $commentaire]);
-    $curseur->closeCursor();
 
+    $curseur->closeCursor();
     $connexion = null;
     return $curseur->fetchAll();
 }
