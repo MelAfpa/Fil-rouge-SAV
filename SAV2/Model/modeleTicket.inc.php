@@ -157,10 +157,10 @@ function suppTicket($num_ticket)
     $sql = "DELETE from ticket where Num_tick=?";
     $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
-    $curseur->execute([$num_ticket]);
     echo "<script type=\"text/javascript\">
     alert('Confirmez-vous la suppression ?')
-</script>";
+    </script>";
+    $curseur->execute([$num_ticket]);
     $curseur->closeCursor();
     $connexion = null;
     return $curseur->fetchAll();
@@ -168,14 +168,13 @@ function suppTicket($num_ticket)
 
 
 
-function addTicket($num_ticket, string $date_ticket, string $log_name, string $num_comm, string $type_tick, string $commentaire)
+function addTicket(string $default, string $date_ticket, string $id_user, string $num_comm, string $type_tick, string $commentaire)
 {
-    $sql = "INSERT INTO ticket VALUES (?,?,?,?,?, ?) inner join user_sav
-            on ticket.Id_user = user_sav.Id_user";
+    $sql = "INSERT INTO ticket VALUES (?,?,?,?,?,?)";
     $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
 
-    $curseur->execute([$num_ticket, $date_ticket, $log_name, $num_comm, $type_tick, $commentaire]);
+    $curseur->execute([$default, $date_ticket, $id_user, $num_comm, $type_tick, $commentaire]);
     $curseur->closeCursor();
 
     $connexion = null;

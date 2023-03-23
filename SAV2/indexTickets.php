@@ -14,16 +14,6 @@ if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
 
-// Récupère les données des formulaires
-if ($action === 'MAJrechercheTicket' || $action === 'MAJajoutTicket') {
-    $num_ticket = $_GET['num'];
-    $date_ticket = $_GET['date'];
-    $num_comm = $_GET['comm'];
-    $type_tick = $_GET['type'];
-    $log_name = $_GET['tech'];
-    $commentaire = $_GET['comm'];
-}
-
 // Etapes et traitements :
 switch ($action) {
     case 'accueil':
@@ -47,7 +37,6 @@ switch ($action) {
 
         // 2 - Affiche la liste des tickets
         require("View/tickets/view_ListeTickets.php");
-
         break;
 
     case "Detail":
@@ -65,7 +54,6 @@ switch ($action) {
         require('View/tickets/view_detailTicket.php');
         break;
 
-
     case "rechercheTicket":
         // Initialise les classes pour gabarit.php
         $titre = "Rechercher un ticket ";
@@ -82,10 +70,17 @@ switch ($action) {
         $classeTitre = 'titreTickets';
         $classeCont = 'tickets';
 
-        // 1 - Recherche le(s) ticket(s) dans la BDD 
+        // 1 - Récupère les données du formulaire de recherche
+        $num_ticket = stripslashes($_GET['num']);
+        $date_ticket = $_GET['date'];
+        $num_comm = stripslashes($_GET['num_comm']);
+        $type_tick = $_GET['type'];
+        $log_name = $_GET['tech'];
+
+        // 2 - Recherche le(s) ticket(s) dans la BDD 
         $tTicket = searchTicket($num_ticket, $date_ticket, $num_comm, $type_tick, $log_name);
 
-        // 2 - Affiche le(s) ticket(s) trouvé(s)
+        // 3 - Affiche le(s) ticket(s) trouvé(s)
         require('View/tickets/view_listeTickets.php');
         break;
 
@@ -94,6 +89,7 @@ switch ($action) {
         $titre = "Suppression d'un ticket";
         $classeTitre = 'titreTickets';
         $classeCont = 'suppTickets';
+
         // 1 - Récupère le numéro de ticket du formulaire 
         $num_ticket = $_GET['num'];
 
@@ -102,7 +98,6 @@ switch ($action) {
 
         // 3 - Affiche le résultat
         require('View/tickets/view_supp.php');
-
         break;
 
     case 'Modifier':
@@ -134,12 +129,11 @@ switch ($action) {
         $type_tick = $_GET['type'];
         $libelle = $_GET['lib'];
         $nb_art = $_GET['art'];
-        $etat = $_GET['etat'];
-        $num_fact = $_GET['fact'];
-        $commentaire = $_GET['comm'];
+        $etat = stripslashes($_GET['etat']);
+        $num_fact = stripslashes($_GET['fact']);
+        $commentaire = stripslashes($_GET['comm']);
         $ref_art = $_GET['ref'];
         $detail = getDetail($num_ticket);
-
 
         // 2- Modifie le ticket dans la BDD
         $ticket = [
@@ -161,24 +155,34 @@ switch ($action) {
         require('View/tickets/view_detailTicket.php');
         break;
 
-    // case 'ajoutTicket':
-    //     // 1 - Affiche le formulaire d'ajout 
-    //     $titre = "Ajouter un ticket";
-    //     $classeTitre = 'titreTickets';
-    //     $classeCont = 'modTickets';
-    //     require('View/tickets/view_formAjout.php');
-    //     break;
+    case 'ajoutTicket':
+        //  Affiche le formulaire d'ajout 
+        $titre = "Ajouter un ticket";
+        $classeTitre = 'titreTickets';
+        $classeCont = 'ajoutTick';
+        require('View/tickets/view_formAjout.php');
+        break;
 
-    // case 'MAJajoutTicket':
-    //     // 1 - Enregistre le nouveau ticket dans la BDD 
-    //     $titre = "Le ticket a bien été créé";
-    //     $tTicket = addTicket($num_ticket, $date_ticket, $log_name, $num_comm, $type_tick, $commentaire);
+    case 'MAJajoutTicket':
+        // Initialise les classes pour gabarit.php
+        $titre = "Le ticket a bien été créé";
+        $classeTitre = 'titreTickets';
+        $classeCont = 'tickets';
 
-    //     // 2 - Affiche le résultat
-    //     $classeTitre = 'titreTickets';
-    //     $classeCont = 'tickets';
-    //     require('View/tickets/view_listeTickets.php');
-    //     break;
+        // 1 - Récupère les données du formulaire d'ajout
+        $date_ticket = $_GET['date'];
+        $num_comm = strip_tags($_GET['num_comm']);
+        $type_tick = $_GET['type'];
+        $id_user = $_GET['tech'];
+        $commentaire = strip_tags($_GET['comm']);
+        $default = 'default';
+
+        // 2 - Enregistre le nouveau ticket dans la BDD 
+        $tTicket = addTicket($default, $date_ticket, $id_user, $num_comm, $type_tick, $commentaire);
+
+        // 3 - Affiche le résultat
+        require('View/tickets/view_ajout.php');
+        break;
     default:
         echo "Erreur : Vous ne devriez pas être là.";
 }

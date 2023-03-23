@@ -34,9 +34,9 @@ $contenu = "<div class='rechGlob'>
                             <option value ='' selected=selected ></option>
                         </select> 
                     <br>
-                        <label for='comm'>Par numéro de commande</label>
+                        <label for='num_comm'>Par numéro de commande</label>
                         <br>
-                        <input type='text' name='comm' >
+                        <input type='text' name='num_comm' >
                     <br>
                         <label for='type'>Type de ticket :</label> 
                         <br> 

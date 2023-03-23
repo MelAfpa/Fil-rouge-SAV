@@ -10,7 +10,7 @@ foreach ($detail as $detail):
         <br>
 
         <label for='tech'>Technicien </label>
-        <select name='tech' id='tech' disabled='disabled'>
+        <select class='mod' name='tech' id='tech' disabled='disabled'>
             <option value = 'Andre' name='and' >Andre</option>
             <option value = 'Bernard' name='ber' >Bernard</option>
             <option value = 'Dubois' name='dub' >Dubois</option>
@@ -36,7 +36,7 @@ foreach ($detail as $detail):
         <br>
 
         <label for='type'>Type de ticket :</label> 
-        <select name='type' id='type'>
+        <select  class='mod' name='type' id='type'>
             <option value = 'EP' name='ep' >EP</option>
             <option value = 'EC' name='ec' >EC</option>
             <option value = 'NP' name='np' >NP</option>
