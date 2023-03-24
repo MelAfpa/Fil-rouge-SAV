@@ -1,5 +1,5 @@
 <?php
-
+ $contenu ='';
 foreach ($detail as $detail):
 
     $contenu = "<form class='formMod' action='indexTickets.php' method='get'>" .

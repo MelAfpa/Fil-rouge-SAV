@@ -1,8 +1,7 @@
 body {
     font-family: Calibri;
     font-size: 1.1em;
-  
-
+    margin: 10em;
 }
 
 /* --------------------------------------------- ACCUEIL  ---------------------------------------------*/
@@ -92,8 +91,6 @@ body .titreTickets {
     color: rgb(32, 3, 121);
     padding: 30px 0px 50px 0px;
     text-shadow: 2px 4px 6px #3f54a1;
-
-
 }
 
 body .tickets {
@@ -192,6 +189,7 @@ body .detTickets{
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
+    margin: 6em auto;
 }
 
 body .detTickets .detailTicket {
@@ -238,7 +236,7 @@ body .detTickets .retListe{
  /* --------------------------------------------- MODIFIER TICKETS  ---------------------------------------------*/
 body .modTickets .formMod  {
     width: 35%;
-    margin: auto;
+    margin: 6em auto;
     border: 2px rgb(32, 3, 121) solid;
     padding-top: 15px;
     padding-left: 10px;

@@ -62,8 +62,6 @@ class usersMgr{
       return $res;
    }
 
-
-
    public static function delUser(int $id){
       $sql= "DELETE FROM user_sav WHERE Id_user = ?";
       $db= dbCon::getConnexion();
