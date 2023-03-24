@@ -1,0 +1,175 @@
+
+:root{
+   --gradient-bg: linear-gradient(
+   to right,
+   #ddd,
+   #ccc,
+   #bbb,
+   #aaa,
+   #aaa,
+   #bbb,
+   #ccc,
+   #ddd
+   );
+
+   --gradient-links: linear-gradient(
+   to right,
+   
+   #3C4FA0,
+   #5580AD,
+   #4288C7,
+   #8EBED8
+   );
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /*user-select: none;*/
+  margin: 0px;
+  padding: 0px;
+/*   background: rgb(0 100 0/.3)!important; */
+}
+
+body{
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   background-image:var(--gradient-bg);
+
+}
+
+header{
+   position: fixed;
+   left: 0px;
+   right: 0px;
+   top: 0px;
+
+   display: flex;
+   background-color: #fff;
+   z-index:2;
+}
+
+
+header> img{
+   width: fit-content;
+}
+
+header> nav{
+   width: 100%;
+   border: 4px solid #fff; 
+   display: flex;
+   align-items: center;
+}
+
+header> nav> ul{
+   border: 4px solid #3C4FA0; 
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #fff;
+}
+
+header> nav> ul> li{
+   font-size: 1.25em;
+
+   padding: .4em;
+   width: 15%;
+   margin: 0 3%; 
+   list-style: none;
+   display: inline-block;
+   background-image: var(--gradient-links);
+   text-align: center;
+   border: 4px solid #fff;
+   transform: skewY(-20deg) rotate(20deg); 
+   transition: transform .5s; 
+}
+
+header> nav> ul> li:hover{
+   transform: skewY(-0deg) rotateY(-0deg) scale(1.2);
+}
+
+header> nav> ul> li> a{
+   color: #fff;
+}
+
+
+footer{
+   height: 10%;
+   position: fixed;
+   left: 0px;
+   right: 0px;
+   bottom: 0px;
+   
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #fff;
+   border-top: 4px solid #3C4FA0;
+}
+/* 
+.test_media_queries{  
+   text-align: center;
+   margin: 2rem;
+   border: 1px solid #000;
+}
+ */
+
+
+
+/************************************     MEDIA QUERIES   ****************************************/
+
+
+@media screen and (max-width:1025px) {
+
+   header> img{
+      width: 14rem;
+   }
+   header> nav> ul> li{
+      font-size: 1em;
+      width: 17%;
+      margin: 0 2%; 
+   }
+}
+@media screen and (max-width:769px) {
+
+   header> img{
+      width: 10rem;
+   }
+   header> nav> ul> li{
+      font-size: 1em;
+   
+      width: 25%;
+      margin: 0 0%; 
+   }
+}
+
+
+@media screen and (max-width:480px) {
+
+   header{
+      flex-direction: column;
+   }
+
+   header>img{
+      width: 20%;
+   }
+
+   header> nav> ul> li{
+      font-size: .85em;
+      width: 30%;
+      margin: .5%; 
+   }
+}
+
+
+
+/*
+    @media screen and (min-width:420px) and (max-width:650px)
+
+    For mobile devices: 320px to 480px
+    For tablets and ipads: 481px to 768px
+    For laptops: 769px to 1024px
+    For desktops: 1025px to 1200px
+ */
