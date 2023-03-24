@@ -37,7 +37,11 @@
         <?php echo $contenu; ?>
     </div>
 
-
+    <footer>
+			<div>
+				<p> © 2023 Copyright: <br /> <a href="#">Beware the data<a></p>
+			</div>
+		</footer>
 
     <script src='View/tickets/click.js'></script>
 </body>

@@ -8,7 +8,6 @@ body {
 /* --------------------------------------------- ACCUEIL  ---------------------------------------------*/
 
 body .titreAcc {
-    margin-top: 4em;
     text-decoration: underline;
     text-align: center;
     color: rgb(32, 3, 121);
@@ -23,13 +22,13 @@ flex-wrap: wrap;
 justify-content: space-around;
 padding-top: 40px;
 
-
 }
 
 body .divAcc .btnListe >a {
     text-decoration: none;
     color: white;
     font-size: 1.6em;
+
 }
 
 body .divAcc .btnListe {
@@ -88,7 +87,6 @@ font-size: 1.6em;
 
 
 body .titreTickets {
-    margin-top: 4em;
     text-decoration: underline;
     text-align: center;
     color: rgb(32, 3, 121);
@@ -130,7 +128,7 @@ body .tickets .bodyTickets{
     color: black;
     float: right;
     width: 80%;
-
+    margin-bottom: 10em;
 }
 
 body .tickets .bodyTickets .contTickets {
@@ -143,7 +141,6 @@ body .tickets .bodyTickets .contTickets {
 
 body .tickets .bodyTickets .contTickets:hover{
     transform: scale(1.5); 
-
 }
 
 body .tickets .titreTick {
@@ -279,6 +276,11 @@ body .modTickets .retListe{
     color: rgb(32, 3, 121);
 }
 
+body .modTickets .errTick{
+    font-size: 1.3em;
+    text-align: center;
+    margin-top: 40px;
+}
 
  /* --------------------------------------------- AJOUTER TICKETS  ---------------------------------------------*/
 
@@ -300,7 +302,7 @@ body .retListe{
 
 body .ajoutTick .formAjout{
     width: 35%;
-    margin: auto;
+    margin: 6em auto;
     border: 2px rgb(32, 3, 121) solid;
 }
 

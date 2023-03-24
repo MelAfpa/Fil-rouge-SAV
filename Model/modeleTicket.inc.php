@@ -70,14 +70,15 @@ function searchTicket($num_ticket, string $date_ticket, string $num_comm, string
         $sql .= join(' AND ', $tabCriteria);
     }
 
-
     $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
     $curseur->execute($tabValues);
-
+    $data = $curseur->fetchAll();
     $curseur->closeCursor();
     $connexion = null;
-    return $curseur->fetchAll();
+
+    return $data;
+
 }
 
 
@@ -133,7 +134,7 @@ function updTicket(array $ticket)
     $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
 
-    $curseur->execute([
+    $data = $curseur->execute([
         ":num_tick" => $ticket['Num_tick'],
         ":date_tick" => $ticket['Date_tick'],
         ":num_comm" => $ticket['Num_comm'],
@@ -146,9 +147,11 @@ function updTicket(array $ticket)
         ":ref_art" => $ticket['Ref_art']
     ]);
 
+    $data = $curseur->fetchAll();
     $curseur->closeCursor();
     $connexion = null;
-    return $curseur->fetchAll();
+
+    return $data;
 }
 
 
@@ -166,11 +169,14 @@ function suppTicket($num_ticket)
     alert('Confirmez-vous la suppression ?')
     </script>";
     $curseur->execute([$num_ticket]);
+    $data = $curseur->fetchAll();
 
     $curseur->closeCursor();
     $connexion = null;
-    return $curseur->fetchAll();
+
+    return $data;
 }
+
 
 
 /**
@@ -189,8 +195,10 @@ function addTicket(string $default, string $date_ticket, string $id_user, string
     $connexion = dbCon::getConnexion();
     $curseur = $connexion->prepare($sql);
     $curseur->execute([$default, $date_ticket, $id_user, $num_comm, $type_tick, $commentaire]);
+    $data = $curseur->fetchAll();
 
     $curseur->closeCursor();
     $connexion = null;
-    return $curseur->fetchAll();
+
+    return $data;
 }

@@ -46,9 +46,8 @@ if (count($tCommande) === 0) {
                     <span class=donneesCommande><p class='titreComm'>Commande n°" . $value['Num_comm'] . "</p> \n" .
             "Date : " . $value['Date_comm'] . "<br/> \n" .
             "Etat de la commande : " . $value['Etat_comm'] . "<br/> \n" .
-            "Numero de  : " . $value['Num_tick'] . "<br/> \n" .
             "Numero de facture: " . $value['Num_fact'] . "<br/> \n" .
-            "Identifiant client : " . $value['Id_cli'] .
+            "Nom du client : " . $value['Nom_cli'] .
             "</span>" .
             "<form  method='get'> \n" .
             "<input type='hidden' " . $action . " />\n" .

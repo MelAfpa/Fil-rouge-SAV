@@ -22,7 +22,7 @@ foreach ($detail as $detail):
         "<input type='hidden' name='num' value=" . $detail['Num_tick'] . ">" .
 
         "<input type='submit' name='action' value='Modifier' />\n" .
-        "<input type='submit' name='action' value='Archiver' />\n" .
+        "<input type='submit' name='action' value='Supprimer' />\n" .
         "</form></div>";
 
 endforeach;
@@ -30,7 +30,6 @@ endforeach;
 $contenu .= "<a class='retListe' href='indexTickets.php?action=listeTickets'>Retourner à la liste des tickets</a>";
 
 require('View/tickets/gabarit.php');
-
 
 
 

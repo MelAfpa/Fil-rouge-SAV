@@ -3,8 +3,8 @@
 	session_start();
    $action='';
    $wrong_inputs= '';
-   $pre_log='Vasseur';
-   $pre_pass='Evan-Vasseur';
+   $pre_log='';
+   $pre_pass='';
    $msg='...';
    if(isset($_POST['birth_date']) && ! empty($_POST['birth_date'])) die();  ### TEST HONEY POT
 
@@ -12,7 +12,12 @@
       
       if($_SERVER['REQUEST_METHOD'] !== 'POST') die();
 
-      else{
+     if($_POST['captcha'] !== $_POST['captcha_inputs']){
+         $action='wrong_captcha';
+         $pre_log= $_POST['login'];
+         $pre_pass= $_POST['password'];
+      }
+      else{ 
          $login = $_POST['login'];
          $login = addslashes($login); ### SECURITY  
          $login= strip_tags($login); ### SECURITY 
@@ -21,7 +26,6 @@
       
          try{
             $user= usersMgr::getUser($login, $pass); ### 1er CONNEXION EN TANT QU'ADMIN POUR RETROUVER LA BRANCHE 
-            
             switch($user['branche']){
 
                case 'admin':
@@ -40,23 +44,21 @@
             $user= usersMgr::getUser($login, $pass); ### 2em CONNEXION AVEC BRANCHE RETROUVE
             $action= "logged_as_$user[branche]";
 
-
          }catch(PDOException $e){
             $action='wrong_inputs';
          }
+
       }
    } 
 
    switch($action){
 		case 'logged_as_sav': 
          setConnexion($user['Log_name'], $user['password'], $user['branche']);
-			//require '../View/view_home.php';
          header("Location: ../indexTickets.php?action=accueil");
 		break;
 
 		case 'logged_as_hotline': 
          setConnexion($user['Log_name'], $user['password'], $user['branche']);
-			//require '../View/view_home.php';
          header("Location: ../indexTickets.php?action=accueil");
 		break;
 
@@ -78,7 +80,7 @@
 		require '../View/view_login.php';
 	}
 
-   function setConnexion($userName, $userPass, $userBranche){
+   function setConnexion($userName, $userPass, $userBranche){  ### DECLARATION DES VARIABLES SESSIONS
    
       $_SESSION['userName'] = $userName;
       $_SESSION['userPass'] = $userPass;

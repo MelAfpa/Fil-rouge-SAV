@@ -1,15 +1,23 @@
 <?php
+ $contenu='';
+ob_start(); ?>
 
-$content =
-    '<form method="GET">' . "\n"
-    . '  NOM<input type="text" name="nom" required><br>' . "\n"
-    . '  PRENOM<input type="text" name="prenom" required><br>' . "\n"
-    . '  ADRESSE<input type="text" name="adresse" required><br>' . "\n"
-    . '  CODE POSTAL<input type="text" name="postal" required><br>' . "\n"
-    . '  VILLE<input type="text" name="ville" required><br>' . "\n"
-    . '  TELEPHONE<input type="text" name="tel" required><br>' . "\n"
-    . '  <input type="hidden" name="action" value="MAJajoutClient">' . "\n"
-    . '  <input type="submit" value="VALIDER"><br>' . "\n"
-    . '</form>' . "\n";
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-require("View/template.php");
+<div>
+    <form method="GET">
+     NOM<input type="text" name="nom" required><br>
+     PRENOM<input type="text" name="prenom" required><br>
+     ADRESSE<input type="text" name="adresse" required><br>
+     CODE POSTAL<input type="text" name="postal" required><br>
+     VILLE<input type="text" name="ville" required><br>
+     TELEPHONE<input type="text" name="tel" required><br>
+     <input type="hidden" name="action" value="MAJajoutClient">
+     <input type="submit" value="VALIDER"><br>
+    </form>
+<div>
+
+   <?php $contenu .= ob_get_clean(); 
+
+//require("View/template.php");
+require('View/tickets/gabarit.php');

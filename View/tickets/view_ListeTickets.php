@@ -56,7 +56,6 @@ $contenu = "<div class='rechGlob'>
                 </div>
             </div>" .
     "<div class=bodyTickets>";
-
 // Affiche la liste des tickets de la BDD
 if (count($tTicket) === 0) {
     $contenu .= "<p class='errTick'> Aucun ticket n'a été trouvé pour cette recherche.</p>";
@@ -74,7 +73,7 @@ if (count($tTicket) === 0) {
             "<input type='hidden' name='num' value='" . $liste['Num_tick'] . "' />\n" .
             "<input type='submit' name='action' value='Detail' />\n" .
             "<input type='submit' name='action' value='Modifier' />\n" .
-            "<input type='submit' name='action' value='Archiver' />\n" .
+            "<input type='submit' name='action' value='Supprimer' />\n" .
             "</form>" .
 
             // Boutons pour afficher le détail d'un ticket, le modifier et l'archiver
@@ -86,4 +85,3 @@ if (count($tTicket) === 0) {
 }
 
 require('View/tickets/gabarit.php');
-

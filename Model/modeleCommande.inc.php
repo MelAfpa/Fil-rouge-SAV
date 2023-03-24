@@ -21,6 +21,7 @@ function getListeCommandes()
 }
 
 
+
 /**
  * Recherche cumulative de commande selon le(s) critère(s) passé(s) en paramètre(s)
  * @param mixed $num_comm
