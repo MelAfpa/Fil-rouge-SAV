@@ -56,7 +56,6 @@ $contenu = "<div class='rechGlob'>
                 </div>
             </div>" .
     "<div class=bodyTickets>";
-
 // Affiche la liste des tickets de la BDD
 if (count($tTicket) === 0) {
     $contenu .= "<p class='errTick'> Aucun ticket n'a été trouvé pour cette recherche.</p>";

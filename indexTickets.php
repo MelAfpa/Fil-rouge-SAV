@@ -84,7 +84,7 @@ switch ($action) {
         require('View/tickets/view_listeTickets.php');
         break;
 
-    case 'Archiver':
+    case 'Supprimer':
         // Initialise la classe pour gabarit.php
         $titre = "Suppression d'un ticket";
         $classeTitre = 'titreTickets';
@@ -183,6 +183,7 @@ switch ($action) {
         // 3 - Affiche le résultat
         require('View/tickets/view_ajout.php');
         break;
+
     default:
         echo "Erreur : Vous ne devriez pas être là.";
 }
