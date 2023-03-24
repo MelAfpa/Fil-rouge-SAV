@@ -1,0 +1,327 @@
+body {
+   font-family: Calibri;
+   font-size: 1.1em;
+ 
+
+}
+
+/* --------------------------------------------- ACCUEIL  ---------------------------------------------*/
+
+body .titreAcc {
+   margin-bottom:4em;
+   text-decoration: underline;
+   text-align: center;
+   color: rgb(32, 3, 121);
+padding: 30px 0px 50px 0px;
+text-shadow: 2px 4px 6px #3f54a1;
+
+}
+
+body .divAcc {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+padding-top: 40px;
+
+}
+
+body .divAcc .btnListe >a {
+   text-decoration: none;
+   color: white;
+   font-size: 1.6em;
+
+}
+
+body .divAcc .btnListe {
+   width: 200px;
+   height: 200px;
+   border-radius: 10px;
+   box-shadow: 10px 10px 20px white;
+   background-color: #3f54a1;
+
+}
+
+body .divAcc .btnListe:hover {
+   background-color: #4587c3
+}
+body .divAcc .btnAjout >a {
+   text-decoration: none;
+   color: white;
+   font-size: 1.6em;
+
+
+}
+
+body .divAcc .btnAjout{
+   width: 200px;
+   height: 200px;
+   border-radius: 10px;
+   box-shadow: 10px 10px 20px white;
+   background-color: #3f54a1;
+
+}
+body .divAcc .btnAjout:hover {
+   background-color: #4587c3
+
+}
+
+
+
+body .divAcc .btnRech{
+   width: 200px;
+   height: 200px;
+   border-radius: 10px;
+   box-shadow: 10px 10px 20px white;
+   background-color: #3f54a1;
+   color: white;
+
+
+}
+body .divAcc .btnRech .rechCommande{
+
+font-size: 1.6em;
+
+}
+
+
+/* --------------------------------------------- Commandes  ---------------------------------------------*/
+
+
+body .titreCommandes {
+   margin-bottom:4em;
+   text-decoration: underline;
+   text-align: center;
+   color: rgb(32, 3, 121);
+   padding: 30px 0px 50px 0px;
+   text-shadow: 2px 4px 6px #3f54a1;
+
+
+}
+
+body .Commandes {
+width:100%;
+
+}
+
+body .Commandes .errComm {
+   font-size: 1.3em;
+   padding: 90px;
+
+}
+
+body .Commandes .bodyCommandes{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-content:flex-start;
+   color: black;
+   float: right;
+   width: 80%;
+}
+
+body .Commandes .bodyCommandes .contCommandes {
+margin: 15px;
+   padding: 15px;
+   height: 150px;
+   width: 250px;
+}
+
+
+body .Commandes .bodyCommandes .contCommandes:hover{
+transform: scale(1.5); 
+
+}
+
+body .Commandes .titreComm {
+   padding-top: 20px;
+   font-weight: bold;
+}
+
+
+body .Commandes .contCommandes .btnCommandes {
+   height: 50px;
+}
+
+
+body .Commandes .rechGlob{
+display: block;
+   width: 15%;
+   float: left;
+   margin: 40px 0px 0px 10px;
+   padding: 0px 15px 15px 15px;
+   background-color: #3f54a1;
+   box-shadow: 10px 10px 10px white;
+   border-radius: 10px;
+
+   }
+
+   body .Commandes .rechGlob > input{
+       width: 80%;
+       
+   }
+
+   body .Commandes .rechGlob .formRecherche > form >label{
+       color: white;
+      
+   }
+
+
+   body .Commandes .rechGlob .formRecherche >form > input:hover {
+       background-color: #acd5fa
+   }   
+   
+
+body .Commandes .rechGlob .recherche {
+   text-align: center;
+text-decoration: underline;
+color: white;
+font-weight: bold;
+}
+
+
+/* --------------------------------------------- DETAIL Commandes  ---------------------------------------------*/
+body .detCommandes{
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-evenly;
+}
+
+body .detCommandes .detailCommande {
+   width: 20%;
+   padding: 0px 10px 15px 15px;
+   border: 2px rgb(32, 3, 121) solid;
+}
+body .detCommandes .detailCommande .titreComm{
+font-weight: bold;
+text-align: center;
+margin: 15px;
+}
+
+body .detCommandes .detailCommande .donneesCommande{
+  text-decoration: underline;
+  margin: 10px;
+}
+
+body .detCommandes .detailCommande textarea{
+margin-left: 15px;    
+box-shadow: 4px 4px 4px rgb(32, 3, 121);
+}
+
+body .detCommandes .detailCommande input {
+   margin-left: 20px;
+}
+
+body .detCommandes .detailCommande .donneesCommandeComm{
+   font-weight: bold;
+   text-align: center;
+}
+
+
+/* --------------------------------------------- MODIFIER Commandes  ---------------------------------------------*/
+body .modCommandes .formMod .donneesCommande{
+   text-decoration: underline;
+  margin: 10px;
+
+}
+
+body .modCommandes  {
+   width: 30%;
+   margin: auto;
+   border: 2px rgb(32, 3, 121) solid;
+   padding-top: 15px;
+}
+
+body .modCommandes input{
+   width: 30%;
+}
+body .modCommandes label {
+   display: inline-block;
+width: 35%;
+text-decoration: underline;
+  margin: 10px;
+}
+
+body .modCommandes textarea{
+   resize: none;
+display: block;
+margin: auto;   
+box-shadow: 4px 4px 4px rgb(32, 3, 121);
+}
+
+body .modCommandes .btnOk{
+   display: block;
+
+margin: auto;
+margin-bottom: 20px;
+}
+
+
+/************************************     MEDIA QUERIES   ****************************************/
+@media screen and (max-width:1280) {
+  
+   body .Commandes .rechGlob .formRecherche >form > input {
+       width: 90%;
+   }
+}
+@media screen and (max-width:1025px) {
+  
+   body .Commandes .bodyCommandes{
+       font-size: 1.1em;
+       width: 65%;
+       justify-content:left;
+
+   }
+
+   body .Commandes .rechGlob {
+       width: 30%;
+       font-size: 1.1em;
+
+   }
+   
+}
+@media screen and (max-width:769px) {
+   body .Commandes .bodyCommandes{
+       font-size: 1.1em;
+       width: 65%;
+       justify-content:center;
+
+   }
+   body .Commandes .bodyCommandes .contCommandes:hover{
+       transform: scale(1.2);
+        }
+}
+@media screen and (max-width:645) {
+
+}
+
+@media screen and (max-width:480px) {
+   body .divAcc > button{
+       margin: 20px;
+   }
+ 
+   body .Commandes .rechGlob {
+       display: block;
+       float: none;
+       width: 90%;
+   }
+   body .Commandes .rechGlob .formRecherche >form > input {
+       width: 70%;
+       margin: 2px;
+   }
+
+   body .Commandes .bodyCommandes{
+       display: block;
+       float: none;
+       width: 100%;
+   }
+
+   body .Commandes .bodyCommandes .contCommandes{
+   width: 100%;
+   margin-bottom: 15px
+   }
+
+   body .Commandes .bodyCommandes .contCommandes:hover{
+      transform: scale(1.1);
+       }
+
+}
