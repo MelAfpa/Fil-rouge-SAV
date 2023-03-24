@@ -1,7 +1,6 @@
 body {
    font-family: Calibri;
    font-size: 1.1em;
- 
 
 }
 
@@ -323,5 +322,4 @@ margin-bottom: 20px;
    body .Commandes .bodyCommandes .contCommandes:hover{
       transform: scale(1.1);
        }
-
 }

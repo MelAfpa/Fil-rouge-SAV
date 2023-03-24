@@ -74,8 +74,6 @@ else if( isset($_SESSION['userName']) && isset($_POST['action'])){
          require '../View/view_home.php';
       break;
 
-
-
       case 'del_user':   ### SUPPRIMER UN UTILISATEUR
 
          try{
@@ -114,6 +112,12 @@ else if( isset($_SESSION['userName']) && isset($_POST['action'])){
 
             if($_POST['upd_log'] === $_SESSION['userName'] && $_POST['upd_dept'] !== 'admin'){  ### ENPECHE UN UNIQUE ADMINISTRATEUR DE CHANGER DE BRANGE SANS CHANGER DE LOGIN
                $msg ="Un admin ne peut pas changer sa propre branche, utilisez un autre compte admin pour cette operation"; 
+               require '../View/view_home.php';
+               return;
+            }
+
+            if(strlen($_POST['upd_log'])<3){
+               $msg= "le login doit comporter au moin 3 caracteres";
                require '../View/view_home.php';
                return;
             }

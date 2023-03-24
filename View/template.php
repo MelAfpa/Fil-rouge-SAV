@@ -22,7 +22,6 @@
 				</ul>
 			</nav>
 		</header>
-		<p class='test_media_queries'>max-width: </p> <!-- ### DEBUG -->
 		<div class='main_content'>
 			<?= $content?>
       <div>

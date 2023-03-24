@@ -19,9 +19,13 @@ $contenu = "<div class = 'divAcc'>
 '<button class=btnAjout>
     <a href="indexTickets.php?action=ajoutCommande">Ajouter une commande</a>
   </button>' .
-'            </div>';
+'            </div>'.
 
-  
+ '<div class = divAcc>
+<button class=btnListe>
+    <a href="indexTickets.php?action=clients">Liste des clients</a>
+</button>
+  </div>'
   ;
 
 

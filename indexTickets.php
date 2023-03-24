@@ -2,6 +2,7 @@
 
 require_once('Model/modeleTicket.inc.php'); ///-m
 require_once('Model/modeleCommande.inc.php');///-a
+require_once('Model/modeleClient.inc.php');///-k
 
 // Initialisation des variables
 $action = 'accueil'; ////-m
@@ -29,10 +30,6 @@ if ($action === 'MAJrechercheCommande' || $action === 'MAJajoutCommande') {   //
    // $num_fact = $_GET['nofact'];
     $id_cli = $_GET['idcli'];
 }
-
-
-
-
 
 
 // Etapes et traitements :
@@ -339,8 +336,39 @@ switch ($action) {  ///-m
         require('View/Commandes/view_listeCommandes.php');
 
         break;
+/////////////////////////////////////////////////////////////////////////////-Kenny
 
-    
+
+case 'clients':
+    //require("Model/modeleClient.inc.php");
+   //die('client');
+    $tClients = getListClients();
+    require 'View/client/view_liste_clients.php';
+    break;
+
+ case 'ajoutClient':
+    // 1 - Afficher formulaire
+    require("View/client/view_formClient.php");
+    break;
+
+ case 'MAJajoutClient':
+    // 1 - Récupérer les données du formulaire
+    $nom = ($_GET)['nom'];
+    $nom = strtoupper($nom);
+    $prenom = $_GET['prenom'];
+    $prenom = ucfirst($prenom);
+    $adresse = $_GET['adresse'];
+    $codePostal = $_GET['postal'];
+    $ville = $_GET['ville'];
+    $ville = strtoupper($ville);
+    $telephone = $_GET['tel'];
+
+    // 2 - Enregistrer le nouveau client dans la BDD
+    //require("Model/modeleClient.inc.php");
+    $res = ajoutClient($nom, $prenom, $adresse, $codePostal, $ville, $telephone);
+    // 3 - Afficher le résultat 
+    require("View/client/view_resultat.php");
+    break;
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////-m
     default:
     echo "Erreur : Vous ne devriez pas être là.";
