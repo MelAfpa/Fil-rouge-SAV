@@ -1,0 +1,408 @@
+body {
+    font-family: Calibri;
+    font-size: 1.1em;
+  
+
+}
+
+/* --------------------------------------------- ACCUEIL  ---------------------------------------------*/
+
+body .titreAcc {
+    text-decoration: underline;
+    text-align: center;
+    color: rgb(32, 3, 121);
+padding: 30px 0px 50px 0px;
+text-shadow: 2px 4px 6px #3f54a1;
+
+}
+
+body .divAcc {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+padding-top: 40px;
+
+}
+
+body .divAcc .btnListe >a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.6em;
+
+}
+
+body .divAcc .btnListe {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px white;
+    background-color: #3f54a1;
+
+}
+
+body .divAcc .btnListe:hover {
+    background-color: #4587c3
+}
+body .divAcc .btnAjout >a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.6em;
+
+
+}
+
+body .divAcc .btnAjout{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px white;
+    background-color: #3f54a1;
+
+}
+body .divAcc .btnAjout:hover {
+    background-color: #4587c3
+
+}
+
+
+
+body .divAcc .btnRech{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px white;
+    background-color: #3f54a1;
+    color: white;
+
+
+}
+body .divAcc .btnRech .rechTicket{
+
+font-size: 1.6em;
+
+}
+
+
+/* --------------------------------------------- TICKETS  ---------------------------------------------*/
+
+
+body .titreTickets {
+    text-decoration: underline;
+    text-align: center;
+    color: rgb(32, 3, 121);
+    padding: 30px 0px 50px 0px;
+    text-shadow: 2px 4px 6px #3f54a1;
+
+
+}
+
+body .tickets {
+    width:100%;
+}
+
+body .suppTickets .errTick{
+    font-size: 1.3em;
+    text-align: center;
+    margin-top: 40px;
+}
+
+body .suppTickets .retListe{
+    display: block;
+    text-decoration: none;
+    color: rgb(32, 3, 121);
+    text-align: center;
+}
+
+body .tickets .errTick {
+    font-size: 1.3em;
+    padding: 90px;
+    display: block;
+    text-align: center;
+}
+
+body .tickets .bodyTickets{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content:flex-start;
+    color: black;
+    float: right;
+    width: 80%;
+
+}
+
+body .tickets .bodyTickets .contTickets {
+    margin: 15px;
+    padding: 15px;
+    height: 150px;
+    width: 250px;
+}
+
+
+body .tickets .bodyTickets .contTickets:hover{
+    transform: scale(1.5); 
+
+}
+
+body .tickets .titreTick {
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+body .tickets .contTickets .btnTickets {
+    height: 50px;
+}
+
+body .tickets .rechGlob{
+    display: block;
+    width: 15%;
+    float: left;
+    margin: 40px 0px 0px 10px;
+    padding: 0px 15px 15px 15px;
+    background-color: #3f54a1;
+    box-shadow: 10px 10px 10px white;
+    border-radius: 10px;
+}
+
+body .tickets .rechGlob  input, select{
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+body .tickets .rechGlob .formRecherche > form >label{
+    color: white;
+}
+
+
+body .tickets .rechGlob .formRecherche >form > input:hover {
+    background-color: #acd5fa
+}   
+    
+
+body .tickets .rechGlob .recherche {
+    text-align: center;
+    text-decoration: underline;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+/* --------------------------------------------- DETAIL TICKETS  ---------------------------------------------*/
+body .detTickets{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+body .detTickets .detailTicket {
+    width: 25%;
+    padding: 0px 10px 15px 15px;
+    border: 2px rgb(32, 3, 121) solid;
+}
+body .detTickets .detailTicket .titreTick{
+    font-weight: bold;
+    text-align: center;
+    margin: 15px;
+}
+
+body .detTickets .detailTicket .donneesTicket{
+   text-decoration: underline;
+   margin: 10px;
+}
+
+body .detTickets .detailTicket textarea{
+margin-left: 15px;    
+box-shadow: 4px 4px 4px rgb(32, 3, 121);
+ }
+
+body .detTickets .detailTicket input {
+    margin-left: 30px;
+    display: inline-block;
+    width: 30%;
+}
+
+body .detTickets .detailTicket .donneesTicketComm{
+    font-weight: bold;
+    text-align: center;
+}
+
+body .detTickets .retListe{
+    width: -webkit-fill-available;
+    text-align: center;
+    margin-top: 60px;
+    text-decoration: none;
+    color: rgb(32, 3, 121);
+}
+
+
+ /* --------------------------------------------- MODIFIER TICKETS  ---------------------------------------------*/
+body .modTickets .formMod  {
+    width: 35%;
+    margin: auto;
+    border: 2px rgb(32, 3, 121) solid;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+body .modTickets input, .mod{
+    width: 30%;
+}
+
+body .modTickets label {
+    display: inline-block;
+    width: 40%;
+    text-decoration: underline;
+   margin: 5px;
+}
+
+body .modTickets textarea{
+    resize: none;
+    display: block;
+    margin: auto;   
+    box-shadow: 4px 4px 4px rgb(32, 3, 121);
+}
+
+body .modTickets .btnOk{
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+body .modTickets .retListe{
+    display: block;
+    text-align: center;
+    margin-top:20px;
+    text-decoration: none;
+    color: rgb(32, 3, 121);
+}
+
+body .modTickets .errTick{
+    font-size: 1.3em;
+    text-align: center;
+    margin-top: 40px;
+}
+
+ /* --------------------------------------------- AJOUTER TICKETS  ---------------------------------------------*/
+
+body .ajoutTicket {
+    display: block;
+    font-size: 1.4em;
+    text-align: center;
+    color: rgb(97, 97, 97);
+    padding-top: 40px;
+}
+
+body .retListe{
+    display: block;
+    text-align: center;
+    margin-top:20px;
+    text-decoration: none;
+    color: rgb(32, 3, 121);
+}
+
+body .ajoutTick .formAjout{
+    width: 35%;
+    margin: auto;
+    border: 2px rgb(32, 3, 121) solid;
+}
+
+body .ajoutTick .formAjout input, .add {
+    display: block;
+    width: 40%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+body .ajoutTick .formAjout input:hover, .add:hover, .addComm:hover{
+    background-color: #acd5fa
+
+}
+
+body .ajoutTick .formAjout textarea{
+    resize: none;
+    display: block;
+    margin: auto;   
+    box-shadow: 4px 4px 4px rgb(32, 3, 121);
+}
+
+body .ajoutTick .formAjout label {
+    display: block;
+    width: 40%;
+    text-decoration: underline;
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+}
+
+
+/************************************     MEDIA QUERIES   ****************************************/
+@media screen and (max-width:1280) {
+   
+    body .tickets .rechGlob .formRecherche >form > input {
+        width: 90%;
+    }
+}
+@media screen and (max-width:1025px) {
+   
+    body .tickets .bodyTickets{
+        font-size: 1.1em;
+        width: 65%;
+        justify-content:left;
+
+    }
+
+    body .tickets .rechGlob {
+        width: 30%;
+        font-size: 1.1em;
+
+    }
+    
+ }
+ @media screen and (max-width:769px) {
+    body .tickets .bodyTickets{
+        font-size: 1.1em;
+        width: 65%;
+        justify-content:center;
+
+    }
+    body .tickets .bodyTickets .contTickets:hover{
+        transform: scale(1.2);
+         }
+}
+@media screen and (max-width:645) {
+
+}
+ 
+ @media screen and (max-width:480px) {
+    body .divAcc > button{
+        margin: 20px;
+    }
+  
+    body .tickets .rechGlob {
+        display: block;
+        float: none;
+        width: 90%;
+    }
+    body .tickets .rechGlob .formRecherche >form > input {
+        width: 70%;
+        margin: 2px;
+    }
+
+    body .tickets .bodyTickets{
+        display: block;
+        float: none;
+        width: 100%;
+    }
+
+    body .tickets .bodyTickets .contTickets{
+    width: 100%;
+    margin-bottom: 15px
+    }
+
+    body .tickets .bodyTickets .contTickets:hover{
+       transform: scale(1.1);
+        }
+
+ }
+ 
